@@ -8,6 +8,7 @@ import { IconPlus, IconEdit, IconTrash, IconPhone, IconMail } from '@tabler/icon
 import PageContainer from '../../../../modernize-dashboard/src/components/container/PageContainer';
 import LeadsList from './Leads/LeadsList';
 import DealsList from './Deals/DealsList';
+import FollowUpCalendar from './Calendar/FollowUpCalendar';
 
 const CRMMain = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -58,40 +59,130 @@ const CRMMain = () => {
 
         <Grid container spacing={3} mb={3}>
           <Grid item xs={12} md={3}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">Total Customers</Typography>
-                <Typography variant="h4" color="primary">{customers.length}</Typography>
+            <Card sx={{ 
+              backgroundColor: '#f8f9ff',
+              border: 'none',
+              boxShadow: 'none',
+              borderRadius: 2,
+              p: 1
+            }}>
+              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2, p: '16px !important' }}>
+                <Box sx={{ 
+                  backgroundColor: '#e8eaff',
+                  borderRadius: '8px',
+                  p: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: '40px',
+                  height: '40px'
+                }}>
+                  <Box sx={{ fontSize: '20px', color: '#5a67d8' }}>📄</Box>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1a202c', mb: 0.5 }}>
+                    {customers.length}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#718096', fontSize: '14px' }}>
+                    Total Customers
+                  </Typography>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">Active Customers</Typography>
-                <Typography variant="h4" color="success.main">
-                  {customers.filter(c => c.status === 'Active').length}
-                </Typography>
+            <Card sx={{ 
+              backgroundColor: '#f0fff4',
+              border: 'none',
+              boxShadow: 'none',
+              borderRadius: 2,
+              p: 1
+            }}>
+              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2, p: '16px !important' }}>
+                <Box sx={{ 
+                  backgroundColor: '#c6f6d5',
+                  borderRadius: '8px',
+                  p: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: '40px',
+                  height: '40px'
+                }}>
+                  <Box sx={{ fontSize: '20px', color: '#38a169' }}>✅</Box>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1a202c', mb: 0.5 }}>
+                    {customers.filter(c => c.status === 'Active').length}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#718096', fontSize: '14px' }}>
+                    Active
+                  </Typography>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">Prospects</Typography>
-                <Typography variant="h4" color="warning.main">
-                  {customers.filter(c => c.status === 'Prospect').length}
-                </Typography>
+            <Card sx={{ 
+              backgroundColor: '#fffbf0',
+              border: 'none',
+              boxShadow: 'none',
+              borderRadius: 2,
+              p: 1
+            }}>
+              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2, p: '16px !important' }}>
+                <Box sx={{ 
+                  backgroundColor: '#fed7aa',
+                  borderRadius: '8px',
+                  p: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: '40px',
+                  height: '40px'
+                }}>
+                  <Box sx={{ fontSize: '20px', color: '#d69e2e' }}>⏳</Box>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1a202c', mb: 0.5 }}>
+                    {customers.filter(c => c.status === 'Prospect').length}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#718096', fontSize: '14px' }}>
+                    Pending
+                  </Typography>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">Total Deals</Typography>
-                <Typography variant="h4" color="info.main">
-                  {customers.reduce((sum, c) => sum + c.deals, 0)}
-                </Typography>
+            <Card sx={{ 
+              backgroundColor: '#fff5f5',
+              border: 'none',
+              boxShadow: 'none',
+              borderRadius: 2,
+              p: 1
+            }}>
+              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2, p: '16px !important' }}>
+                <Box sx={{ 
+                  backgroundColor: '#fed7d7',
+                  borderRadius: '8px',
+                  p: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: '40px',
+                  height: '40px'
+                }}>
+                  <Box sx={{ fontSize: '20px', color: '#e53e3e' }}>❌</Box>
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1a202c', mb: 0.5 }}>
+                    0
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#718096', fontSize: '14px' }}>
+                    Rejected
+                  </Typography>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
@@ -103,6 +194,7 @@ const CRMMain = () => {
               <Tab label="Customers" />
               <Tab label="Leads" />
               <Tab label="Deals" />
+              <Tab label="Calendar" />
             </Tabs>
           </Box>
           <CardContent>
@@ -152,6 +244,7 @@ const CRMMain = () => {
             )}
             {activeTab === 1 && <LeadsList />}
             {activeTab === 2 && <DealsList />}
+            {activeTab === 3 && <FollowUpCalendar />}
           </CardContent>
         </Card>
 
