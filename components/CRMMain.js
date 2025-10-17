@@ -5,10 +5,12 @@ import {
   DialogTitle, DialogContent, TextField, DialogActions, IconButton, Tabs, Tab
 } from '@mui/material';
 import { IconPlus, IconEdit, IconTrash, IconPhone, IconMail } from '@tabler/icons-react';
-import PageContainer from '../../../../modernize-dashboard/src/components/container/PageContainer';
+import PageContainer from '../../../../modernize-dashboard/src/components/container/PageContainer.js';
 import LeadsList from './Leads/LeadsList';
 import DealsList from './Deals/DealsList';
 import FollowUpCalendar from './Calendar/FollowUpCalendar';
+import IVRTab from './IVR/IVRTab';
+import CallRecordingTab from './CallRecording/CallRecordingTab';
 
 const CRMMain = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -195,6 +197,8 @@ const CRMMain = () => {
               <Tab label="Leads" />
               <Tab label="Deals" />
               <Tab label="Calendar" />
+              <Tab label="IVR" />
+              <Tab label="Call Recording" />
             </Tabs>
           </Box>
           <CardContent>
@@ -245,6 +249,8 @@ const CRMMain = () => {
             {activeTab === 1 && <LeadsList />}
             {activeTab === 2 && <DealsList />}
             {activeTab === 3 && <FollowUpCalendar />}
+            {activeTab === 4 && <IVRTab />}
+            {activeTab === 5 && <CallRecordingTab />}
           </CardContent>
         </Card>
 
